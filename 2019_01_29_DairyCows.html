@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">James Custer</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="TThome.html">Tidy Tuesday</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="contact.html">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/JamesCuster">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/Jamesguy_Inc">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/jamescuster0121/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div class="row" style="margin-top: 20px">
+  <div id="nav" class="col-xs-12 col-sm-3">
+    <div class="list-unstyled" style="min-width: 180px" data-spy="affix-top">
+      <p>
+        <a class="list-group-item" href="./TThome">Tidy Tuesday</a> 
+        <a class="list-group-item" href="2019_01_29_DairyCows.html">01/29/2019 Dairy Cows</a>
+    </div>
+  </div>
+<div class="col-xs-12 col-sm-9 pull-right">
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="dairy-cows" class="section level1">
+<h1>Dairy Cows</h1>
+<p>Data for Tidy Tuesday this week comes from the United States Department of Agriculture. The data and code books can be found <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-01-29">here</a>. There are five different data sets provided, and I will only look at the milk products facts data set which tracks Americans annual consumption of various milk products.</p>
+<pre class="r"><code>library(tidyverse)
+library(cowplot)
+library(viridis)
+theme_set(theme_light())
+
+MilkProductFacts &lt;- 
+  read_csv(&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-29/milk_products_facts.csv&quot;)</code></pre>
+<pre class="r"><code>MilkProductFactsTidy &lt;- MilkProductFacts %&gt;% 
+  gather(product, lbsPerPerson, -year) %&gt;%
+  mutate(product = str_to_title(str_replace_all(product, &quot;_&quot;, &quot; &quot;)))
+
+MilkProductFactsTidy %&gt;% 
+  ggplot(aes(year, lbsPerPerson, color = product)) +
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+  labs(x = &quot;Year&quot;,
+       y = &quot;Pounds consumed per person&quot;,
+       title = &quot;Average US Milk Product Consumption 1975-2017&quot;,
+       color = &quot;Products&quot;) +
+  theme(legend.title.align = .5)</code></pre>
+<p><img src="images/2019_01_29_DairyCows/unnamed-chunk-2-1.png" width="672" /></p>
+<p>There are so many different products in this graph that it is difficult to get a clear picture of what is going on, with the exception of the decline in fluid milk consumption. Fortunately if we look the names of the products they have a natural grouping category of butter, cheese, dry, evaporated, fluid, and frozen. We can use these categories to hopefully get a clearer picture of what is happening.</p>
+<pre class="r"><code>MilkProductFactsCat &lt;- MilkProductFacts %&gt;% 
+  gather(product, lbsPerPerson, -year) %&gt;%
+  separate(product, c(&quot;category&quot;, &quot;product&quot;), sep = &quot;_&quot;, extra = &quot;merge&quot;, fill = &quot;right&quot;) %&gt;%
+  mutate(product = ifelse(is.na(product), category, product)) %&gt;% 
+  group_by(category, year) %&gt;% 
+  summarize(lbsPerPersonCat = sum(lbsPerPerson)) %&gt;% 
+  ungroup()
+
+MilkProductFactsCat %&gt;% 
+  ggplot(aes(year, lbsPerPersonCat, color = category)) +
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+    labs(x = &quot;Year&quot;,
+       y = &quot;Pounds consumed per person&quot;,
+       title = &quot;Average US Milk Product Consumption by Category 1975-2017&quot;,
+       color = &quot;Category&quot;)</code></pre>
+<p><img src="images/2019_01_29_DairyCows/unnamed-chunk-3-1.png" width="672" /></p>
+<p>This is much better, but again it is still difficult to see what is really going on in the plot since it is being dominated by the fluid category. Two potential solutions can be either show two plots one which includes fluid and one that excludes it, or plot each category on its own plot.</p>
+<pre class="r"><code>PlotWithFluid &lt;- MilkProductFactsCat %&gt;% 
+  ggplot(aes(year, lbsPerPersonCat, color = category)) +
+  geom_line(size = 1) +
+  scale_colour_viridis_d() +
+  labs(x = &quot;Year&quot;,
+       y = &quot;Pounds consumed per person&quot;,
+       title = paste(strwrap(&quot;Average US Milk Product Consumption by Category 1975-2017&quot;
+                             , width = 36), 
+                     collapse = &quot;\n&quot;),
+       subtitle = &quot;Including Fluid Products&quot;,
+       color = &quot;Category&quot;)
+
+# PlotWithoutFluid &lt;- MilkProductFacts %&gt;% 
+#   gather(product, lbsPerPerson, -year) %&gt;%
+#   separate(product, c(&quot;category&quot;, &quot;product&quot;), sep = &quot;_&quot;, extra = &quot;merge&quot;, fill = &quot;right&quot;) %&gt;%
+#   mutate(product = ifelse(is.na(product), category, product)) %&gt;%
+#   filter(category != &quot;fluid&quot;) %&gt;% 
+#   group_by(category, year) %&gt;% 
+#   summarize(lbsPerPersonCat = sum(lbsPerPerson)) %&gt;% 
+PlotWithoutFluid &lt;- MilkProductFactsCat %&gt;% 
+  filter(category != &quot;fluid&quot;) %&gt;% 
+  ggplot(aes(year, lbsPerPersonCat, color = category)) +
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+  labs(x = &quot;Year&quot;,
+       y = &quot;Pounds consumed per person&quot;,
+       title = paste(strwrap(&quot;Average US Milk Product Consumption by Category 1975-2017&quot;
+                             , width = 36), 
+                     collapse = &quot;\n&quot;),
+       subtitle = &quot;Excluding Fluid Products&quot;,
+       color = &quot;Category&quot;)
+
+plot_grid(
+  PlotWithFluid + 
+    theme(legend.position=&quot;none&quot;, 
+          plot.title = element_text(size=12)),
+  get_legend(PlotWithFluid),
+  PlotWithoutFluid + 
+    theme(legend.position=&quot;none&quot;, 
+          plot.title = element_text(size=12)),
+  get_legend(PlotWithoutFluid),
+  rel_widths = c(1.5, .5, 1.5, .5),
+  ncol = 4)</code></pre>
+<p><img src="images/2019_01_29_DairyCows/unnamed-chunk-4-1.png" width="960" /></p>
+<p>Alternatively we could look at each group individually.</p>
+<pre class="r"><code>MilkProductFactsCat %&gt;% 
+  ggplot(aes(year, lbsPerPersonCat, color = category)) +
+  geom_line(size = 1) +
+  scale_colour_viridis_d() +
+  facet_wrap(~category, scales = &quot;free&quot;) + 
+    labs(x = &quot;Year&quot;,
+       y = &quot;Pounds consumed per person&quot;,
+       title = &quot;Average US Milk Product Consumption by Category 1975-2017&quot;,
+       color = &quot;Category&quot;)</code></pre>
+<p><img src="images/2019_01_29_DairyCows/unnamed-chunk-5-1.png" width="672" /></p>
+<p>This gives us a much better idea of what is going on within each category individually and the magnitude of the change in that category which is great, but it is difficult to see how a change of x amount in one category compares to another since they are on different scales. In order to do a comparison like this we need to get them on similar scales. I will use for each year the percent change from 1975 in order to achieve this.</p>
+<pre class="r"><code>MilkProductFactsCat %&gt;% 
+  group_by(category) %&gt;% 
+  mutate(refYear = ifelse(year == 1975, lbsPerPersonCat, NA)) %&gt;% 
+  fill(refYear) %&gt;%
+  mutate(pctChange = (lbsPerPersonCat - refYear) / refYear * 100) %&gt;%
+  ggplot(aes(year, pctChange, color = category)) + 
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+  labs(x = &quot;Year&quot;,
+       y = &quot;Percent Change&quot;,
+       title = &quot;Percent Change in US Milk Consumption by Product Category Since 1975-2017&quot;,
+       color = &quot;Category&quot;)</code></pre>
+<p><img src="images/2019_01_29_DairyCows/unnamed-chunk-6-1.png" width="672" /></p>
+<p>In this plot we get a better idea of of how much the changes in each category compare relative to the others. As we can see the change in cheese consumption from 1975 to 2017 has increased by over 100%! The change in fluid milk consumption that seemed so large in previous graphs was only about a 35% decrease between 1975 and 2017. Another relationship that is easier to see here is that the dry and evaporated categories seem to be inversely related. Since this graph seems to be quite useful, we should look at a similar graph at the product level.</p>
+<pre class="r"><code>MilkProductFactsTidy &lt;- MilkProductFactsTidy %&gt;% 
+  group_by(product) %&gt;% 
+  mutate(refYear = ifelse(year == 1975, lbsPerPerson, NA)) %&gt;% 
+  fill(refYear) %&gt;%
+  mutate(pctChange = (lbsPerPerson - refYear) / refYear * 100) %&gt;% 
+  ungroup()
+
+MilkProductFactsTidy %&gt;% 
+  ggplot(aes(year, pctChange, color = product)) + 
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+  labs(x = &quot;Year&quot;,
+       y = &quot;Percent Change&quot;,
+       title = &quot;Percent Change in US Milk Consumption by Product Since 1975-2017&quot;,
+       color = &quot;Category&quot;)</code></pre>
+<p><img src="images/2019_01_29_DairyCows/unnamed-chunk-7-1.png" width="672" /> This graph looks like it could be much more interesting than the very first one we looked at, but there is still so much going on it is difficult to see what is going on. Lets see if we can tease this out a little more by grouping the products into three groups, those with a decrease, relatively moderate increase, or large increases in consumption.</p>
+<pre class="r"><code>MilkProductFactsTidy &lt;- MilkProductFactsTidy %&gt;%
+  group_by(product) %&gt;% 
+  mutate(changeCat = case_when(year == 2017 &amp; pctChange &lt; 0 ~ &quot;Decrease&quot;,
+                               year == 2017 &amp; between(pctChange, 0, 100) ~ &quot;Moderate Increase&quot;,
+                               year == 2017 &amp; pctChange &gt; 100 ~ &quot;Increase&quot;)) %&gt;% 
+  fill(changeCat, .direction = &quot;up&quot;)
+
+decreasePlot &lt;- MilkProductFactsTidy %&gt;% 
+  filter(changeCat == &quot;Decrease&quot;) %&gt;% 
+  ggplot(aes(year, pctChange, color = product)) + 
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+  facet_wrap(~changeCat, scales = &quot;free&quot;) + 
+  labs(x = &quot;Year&quot;,
+       y = &quot;Percent Change&quot;,
+       title = &quot;Percent Change in US Milk Consumption by Product Since 1975-2017&quot;,
+       color = &quot;Category&quot;)
+
+mIncreasePlot &lt;- MilkProductFactsTidy %&gt;% 
+  filter(changeCat == &quot;Moderate Increase&quot;) %&gt;% 
+  ggplot(aes(year, pctChange, color = product)) + 
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+  facet_wrap(~changeCat, scales = &quot;free&quot;) + 
+  labs(x = &quot;Year&quot;,
+       y = &quot;Percent Change&quot;,
+       title = &quot;Percent Change in US Milk Consumption by Product Since 1975-2017&quot;,
+       color = &quot;Category&quot;)
+
+increasePlot &lt;- MilkProductFactsTidy %&gt;% 
+  filter(changeCat == &quot;Increase&quot;) %&gt;% 
+  ggplot(aes(year, pctChange, color = product)) + 
+  geom_line(size = 1) +
+  scale_colour_viridis_d() + 
+  facet_wrap(~changeCat, scales = &quot;free&quot;) + 
+  labs(x = &quot;Year&quot;,
+       y = &quot;Percent Change&quot;,
+       title = &quot;Percent Change in US Milk Consumption by Product Since 1975-2017&quot;,
+       color = &quot;Category&quot;)
+
+plot_grid(decreasePlot + 
+    theme(legend.position=&quot;none&quot;), 
+    get_legend(decreasePlot),
+    mIncreasePlot + 
+    theme(legend.position=&quot;none&quot;), 
+    get_legend(mIncreasePlot), 
+    increasePlot + 
+    theme(legend.position=&quot;none&quot;), 
+    get_legend(increasePlot), 
+    ncol = 2, 
+    align = &quot;v&quot;, axis = &quot;l&quot;)</code></pre>
+<p><img src="images/2019_01_29_DairyCows/unnamed-chunk-8-1.png" width="960" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

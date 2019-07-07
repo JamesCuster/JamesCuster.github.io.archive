@@ -1,0 +1,16 @@
+---
+title: James Custer
+---
+
+<div style="margin-top: 20px">
+<img src="images/james.png" style="width:35%; border:5px solid; margin-right: 20px" align="left">
+
+
+I am a lifelong Texan, which is a source of both pride and embarassment depending on the day. I am currently in the final semester of my MS in Biostatistics and Data Science at The University of Texas Health Science Center in Houston, Texas.
+
+My current research is focused on HPV infections in the general adult population of the United States, under the supervision of Dr. Stacia DeSantis and Dr. George Delclos. Previously I worked on the School Physical Activity and Nutrition Survey at the Michael and Susan Dell Center for Healthy Living, which established a childhood obesity surveillance system to monitor the prevalence of overweight/obesity in school-aged children in Texas.
+
+I am an R enthusiast and find great enjoyment in demystifying data. I loved jigsaw puzzles as a kid (still do), and figuring out data is my adult jigsaw puzzle. 
+
+Please excuse my current lack of content. I am in my final semester and am very busy with classes and finishing my thesis. Content is under construction.
+</div>

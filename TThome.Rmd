@@ -1,0 +1,9 @@
+---
+title: Tidy Tuesday
+output:
+  html_document:
+    includes:
+      before_body: TTLayout.html
+---
+
+Tidy Tuesday is a weekly event put on by the R for Data Science online learning community. Each week they release one or more data sets to give individuals the opportunity to practice data wrangling and visualization skills. This is where I will chronicle my Tidy Tuesday endeavors. If you are more interested in in the event you can visit the <a href="https://github.com/rfordatascience/tidytuesday">Tidy Tuesday GitHub</a> page.

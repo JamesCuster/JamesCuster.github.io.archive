@@ -1,0 +1,23 @@
+name: "James Custer"
+output_dir: "."
+navbar:
+  title: "James Custer"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Tidy Tuesday"
+      href: TThome.html
+  right:
+    - icon: fa-envelope fa-lg
+      href: contact.html
+    - icon: fa-github fa-lg
+      href: https://github.com/JamesCuster
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/Jamesguy_Inc
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/jamescuster0121/
+output:
+  html_document:
+    theme: sandstone
+    css: "styles.css"
+
